@@ -60,5 +60,11 @@ namespace VendingMachine
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReporteVentas reporte = new ReporteVentas();
+            reporte.Show();
+        }
     }
 }

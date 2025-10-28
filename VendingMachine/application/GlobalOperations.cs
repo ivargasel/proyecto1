@@ -25,6 +25,7 @@ namespace Vending_Machine.Application
         public static int[,] Cantidad { get; set; } = new int[rows, cols];
         public static double[,] Precios { get; set; } = new double[rows, cols];
         public static List<string> Compras { get; set; } = new List<string>();
+        public static Queue<string> Ordenes { get; set; } = new Queue<string>();
 
         /// <summary>
         /// Esta función devuelve una representación en cadena del inventario actual.
@@ -121,6 +122,10 @@ namespace Vending_Machine.Application
             return data;
         }
 
+        /// <summary>
+        /// Función que calcula el total de las compras realizadas.
+        /// </summary>
+        /// <returns></returns>
         public double TotalCompras()
         {
             double value = 0;
@@ -141,6 +146,16 @@ namespace Vending_Machine.Application
             return value;
         }
 
+        public void ClearCompras()
+        {
+            Compras.Clear();
+        }
+
+        /// <summary>
+        /// Función que calcula el vuelto a entregar al cliente.
+        /// </summary>
+        /// <param name="pago"></param>
+        /// <returns></returns>
         public double TotalVuelto(double pago)
         {
             double total = TotalCompras();
@@ -148,11 +163,29 @@ namespace Vending_Machine.Application
             return vuelto;
         }
 
+        /// <summary>
+        /// Función que calcula el vuelto a entregar al cliente.
+        /// </summary>
+        /// <returns></returns>
         public double TotalVuelto()
         {
             double total = TotalCompras();
             double vuelto = total;
             return vuelto;
+        }
+
+        /// <summary>
+        /// Función que crea una orden y la agrega a la cola de órdenes.
+        /// </summary>
+        /// <param name="orden"></param>
+        public void CreateOrdenes(string orden)
+        {
+            Ordenes.Enqueue(orden);
+        }
+
+        public Queue<object> IndexOrdenes()
+        {
+            return Ordenes;
         }
     }
 }

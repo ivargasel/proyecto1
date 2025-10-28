@@ -42,6 +42,7 @@
             this.bCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadAdmin)).BeginInit();
             this.SuspendLayout();
@@ -183,12 +184,23 @@
             this.label7.Text = "Finalmente le da click en \'Agregar\'. Al finalizar seleccione \'Cerrar\' para volver" +
     " al menú principal.";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(455, 282);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "Reporte Ventas";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCerrar;
             this.ClientSize = new System.Drawing.Size(563, 587);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bCerrar);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Button bCerrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

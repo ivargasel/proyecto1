@@ -51,12 +51,27 @@ namespace VendingMachine
             }                                   
             else if (totalPagado == 0)
             {
+                string productos = string.Empty;
+                var ordernes = operations.IndexCompras();
+                foreach (var orden in ordernes)
+                {
+                    productos += $"{orden.Nombre} - {orden.Precio.ToString("C2", new System.Globalization.CultureInfo("es-cr"))} - 1 \n";
+                }
+
+                string obj = $"{totalCompra}\n{efectivoIngresado}\n{tarjetaIngresado}\n{totalPagado}\n{productos}\n{DateTime.UtcNow}";
+
+                operations.CreateOrdenes(obj);
+                operations.ClearCompras();
+
                 MessageBox.Show("Pago realizado con éxito. ¡Gracias por su compra!", "Pago Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form1 main = new Form1();
+                main.Show();
                 this.Close();
             }
             else
             {
                 MessageBox.Show("El monto ingresado es insuficiente para completar la compra. Por favor, ingrese un monto válido.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 

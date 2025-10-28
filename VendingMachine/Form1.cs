@@ -91,7 +91,7 @@ namespace VendingMachine
             this.Hide();
         }
 
-        private void ActualizarMontos()
+        public void ActualizarMontos()
         {   
             List<Producto> data = operations.IndexCompras();
             dataTable.DataSource = data.ToArray();
@@ -193,6 +193,7 @@ namespace VendingMachine
         {
             Payment pago = new Payment();
             pago.Show();
+            this.Hide();
         }
     }
 }
