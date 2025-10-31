@@ -48,7 +48,7 @@
             this.bproducto15 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -231,18 +231,17 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // button1
+            // btnPagar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(398, 373);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(292, 63);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "PAGAR";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPagar.Location = new System.Drawing.Point(398, 373);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(292, 63);
+            this.btnPagar.TabIndex = 1;
+            this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.button1_Click);
             // 
             // listView1
             // 
@@ -308,7 +307,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -343,7 +342,7 @@
         private System.Windows.Forms.Button bproducto15;
         private System.Windows.Forms.Button bproducto1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Label label1;

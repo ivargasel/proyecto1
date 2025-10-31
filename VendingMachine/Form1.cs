@@ -81,6 +81,10 @@ namespace VendingMachine
             btnAdmin.Image = admin;
             btnAdmin.BackgroundImageLayout = ImageLayout.Stretch;
 
+            Image pagar = Image.FromFile(@"assets\icons\btnPagar.png");
+            btnPagar.Image = pagar;
+            btnPagar.BackgroundImageLayout = ImageLayout.Zoom;
+
             ActualizarMontos();
         }
 

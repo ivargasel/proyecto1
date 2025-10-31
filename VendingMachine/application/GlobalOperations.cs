@@ -156,11 +156,13 @@ namespace Vending_Machine.Application
         /// </summary>
         /// <param name="pago"></param>
         /// <returns></returns>
-        public double TotalVuelto(double pago)
+        public double TotalPendiente(double pago)
         {
             double total = TotalCompras();
-            double vuelto = pago - total;
-            return vuelto;
+            double pendiente = 0;
+            if (pago  < total)
+                pendiente = total - pago;
+            return pendiente;
         }
 
         /// <summary>
@@ -175,6 +177,22 @@ namespace Vending_Machine.Application
         }
 
         /// <summary>
+        /// Función que calcula el vuelto a entregar al cliente.
+        /// </summary>
+        /// <returns></returns>
+        public double TotalVuelto(double pago)
+        {
+           double total = TotalCompras();
+            double vuelto = 0;
+            if (pago > total)
+            {
+                vuelto = pago - total;
+            }
+
+            return vuelto;
+        }
+
+        /// <summary>
         /// Función que crea una orden y la agrega a la cola de órdenes.
         /// </summary>
         /// <param name="orden"></param>
@@ -183,7 +201,7 @@ namespace Vending_Machine.Application
             Ordenes.Enqueue(orden);
         }
 
-        public Queue<object> IndexOrdenes()
+        public Queue<string> IndexOrdenes()
         {
             return Ordenes;
         }

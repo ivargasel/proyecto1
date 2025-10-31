@@ -26,16 +26,20 @@ namespace VendingMachine
             {
                 for (int i = 0; i < ordenes.Count; i++)
                 {
-                    string[] value = new string[6];
-                    value = ordenes[i].Peek();
-                    lblReporte.Text += $" {ordenes.Peek().GetType()} \n";
+                    //string[] value = new string[6];
+                    //value = ordenes[i].Peek();
+
+                    string[] array = ordenes.ToArray();
+                    string valor = array[i];
+
+                    lblReporte.Text += $" {valor} \n";
 
                 }
             }
             else
             {
                 lblReporte.Text = "No hay ventas registradas.";
-            }          
+            }
         }
     }
 }

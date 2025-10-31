@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vending_Machine.Application;
 
@@ -15,6 +7,7 @@ namespace VendingMachine
     public partial class Payment : Form
     {
         GlobalOperations operations = new GlobalOperations();
+        double saldoTarjeta = 0;
 
         public Payment()
         {
@@ -24,16 +17,47 @@ namespace VendingMachine
         private void Payment_Load(object sender, EventArgs e)
         {
             lblTotal.Text = operations.TotalCompras().ToString("C2", new System.Globalization.CultureInfo("es-cr"));
-            lblVuelto.Text = operations.TotalVuelto().ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+            lblPendiente.Text = operations.TotalVuelto().ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+            lblVuelto.Text = "0";// operations.TotalVuelto().ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+
+            bGeneraSaldoAleatorio();
+            this.txtEfectivo.KeyPress += new KeyPressEventHandler(this.validaDatoNumerico);
+            this.txtTarjeta.KeyPress += new KeyPressEventHandler(this.validaDatoNumerico);
+        }
+
+        private void validaDatoNumerico(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtEfectivo_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEfectivo.Text))
+            double efectivoIngresado = !string.IsNullOrEmpty(txtEfectivo.Text) ? Convert.ToDouble(txtEfectivo.Text) : 0;
+            double tarjetaIngresado = !string.IsNullOrEmpty(txtTarjeta.Text) ? Convert.ToDouble(txtTarjeta.Text) : 0;
+            double totalMontos = tarjetaIngresado + efectivoIngresado;
+
+            lblPendiente.Text = operations.TotalPendiente(totalMontos).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+            lblVuelto.Text = operations.TotalVuelto(totalMontos).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+        }
+
+        private void txtTarjeta_TextChanged(object sender, EventArgs e)
+        {
+            double efectivoIngresado = !string.IsNullOrEmpty(txtEfectivo.Text) ? Convert.ToDouble(txtEfectivo.Text) : 0;
+            double tarjetaIngresado = !string.IsNullOrEmpty(txtTarjeta.Text) ? Convert.ToDouble(txtTarjeta.Text) : 0;
+            double totalMontos = tarjetaIngresado + efectivoIngresado;
+
+            if (!bVerificarSaldo(tarjetaIngresado))
             {
-                double efectivoIngresado = Convert.ToDouble(txtEfectivo.Text);
-                lblVuelto.Text = operations.TotalVuelto(efectivoIngresado).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
-            }            
+                txtTarjeta.Text = "0";
+                totalMontos = 0 + efectivoIngresado;
+                MessageBox.Show("El saldo de la tarjeta es insuficiente.", "Saldo Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            lblPendiente.Text = operations.TotalPendiente(totalMontos).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
+            lblVuelto.Text = operations.TotalVuelto(totalMontos).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
         }
 
         private void bPay_Click(object sender, EventArgs e)
@@ -41,7 +65,7 @@ namespace VendingMachine
             double totalCompra = operations.TotalCompras(); 
             double efectivoIngresado = !string.IsNullOrEmpty(txtEfectivo.Text) ? Convert.ToDouble(txtEfectivo.Text) : 0;
             double tarjetaIngresado = !string.IsNullOrEmpty(txtTarjeta.Text) ? Convert.ToDouble(txtTarjeta.Text) : 0;
-
+            
             double totalPagado = totalCompra - (efectivoIngresado + tarjetaIngresado);
 
             if (totalPagado < 0)
@@ -75,19 +99,27 @@ namespace VendingMachine
             }
         }
 
-        private void txtTarjeta_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtTarjeta.Text))
-            {
-                double efectivoIngresado = !string.IsNullOrEmpty(txtEfectivo.Text) ? Convert.ToDouble(txtEfectivo.Text) : 0;
-                double tarjetaIngresado = Convert.ToDouble(txtTarjeta.Text) + efectivoIngresado;
-                lblVuelto.Text = operations.TotalVuelto(tarjetaIngresado).ToString("C2", new System.Globalization.CultureInfo("es-cr"));
-            }
-        }
 
         private void bCancel_Click(object sender, EventArgs e)
         {
+            Form1 vendingMachine = new Form1();
+            vendingMachine.Show();
             this.Hide();
         }
+
+        private void bGeneraSaldoAleatorio()
+        {
+            Random rnd = new Random();
+            double saldoAleatorio = rnd.Next(0, 1000); // Asigna un número en el rango asignado
+            saldoTarjeta = saldoAleatorio;
+        }
+
+        private bool bVerificarSaldo(double tarjetaIngresado)
+        {
+            if(tarjetaIngresado > saldoTarjeta)
+                 return false;
+            return true;
+        }
+
     }
 }

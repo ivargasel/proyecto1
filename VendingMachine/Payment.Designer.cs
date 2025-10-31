@@ -40,11 +40,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblVuelto = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblPendiente = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(156, 251);
+            this.bCancel.Location = new System.Drawing.Point(156, 263);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(75, 23);
             this.bCancel.TabIndex = 16;
@@ -54,7 +57,7 @@
             // 
             // bPay
             // 
-            this.bPay.Location = new System.Drawing.Point(75, 251);
+            this.bPay.Location = new System.Drawing.Point(75, 263);
             this.bPay.Name = "bPay";
             this.bPay.Size = new System.Drawing.Size(75, 23);
             this.bPay.TabIndex = 15;
@@ -139,7 +142,7 @@
             // 
             this.lblVuelto.AutoSize = true;
             this.lblVuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVuelto.Location = new System.Drawing.Point(169, 206);
+            this.lblVuelto.Location = new System.Drawing.Point(167, 236);
             this.lblVuelto.Name = "lblVuelto";
             this.lblVuelto.Size = new System.Drawing.Size(68, 24);
             this.lblVuelto.TabIndex = 20;
@@ -147,19 +150,49 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 206);
+            this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 24);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Vuelto";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 23;
+            // 
+            // lblPendiente
+            // 
+            this.lblPendiente.AutoSize = true;
+            this.lblPendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPendiente.Location = new System.Drawing.Point(169, 212);
+            this.lblPendiente.Name = "lblPendiente";
+            this.lblPendiente.Size = new System.Drawing.Size(68, 24);
+            this.lblPendiente.TabIndex = 22;
+            this.lblPendiente.Text = "monto";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(19, 236);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 24);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Vuelto:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(19, 206);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 24);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Pendiente:";
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 301);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblPendiente);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblVuelto);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTotal);
@@ -196,5 +229,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblVuelto;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblPendiente;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

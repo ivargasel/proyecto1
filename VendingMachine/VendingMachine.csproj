@@ -119,7 +119,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\icons\coin.png" />
+    <Content Include="assets\icons\btnPagar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\coin.ico" />
     <Content Include="assets\icons\settings.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
