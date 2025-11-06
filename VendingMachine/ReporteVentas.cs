@@ -14,8 +14,6 @@ namespace VendingMachine
 {
     public partial class ReporteVentas : Form
     {
-        GlobalOperations operations = new GlobalOperations();
-
         public ReporteVentas()
         {
             InitializeComponent();
@@ -23,13 +21,10 @@ namespace VendingMachine
 
         private void ReporteVentas_Load(object sender, EventArgs e)
         {
-            // Convertir la pila a lista para visualizarla (opcional: invertir para mostrar la más reciente arriba)
+            // Convertir la pila de ventas a lista para asignarla al grid
             var historial = GlobalOperations.HistorialVentas.ToList();
-
-            // Si quieres ver lo más reciente primero
-            historial.Reverse();
-
-            // Bind al DataGridView
+            
+            // Bind al grid con la lista de ventas
             dgVentas.DataSource = historial;
         }
     }

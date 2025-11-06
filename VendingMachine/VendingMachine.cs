@@ -7,17 +7,19 @@ using VendingMachine.Models;
 
 namespace VendingMachine
 {
-    public partial class Form1 : Form
+    public partial class VendingMachine : Form
     {
         GlobalOperations operations = new GlobalOperations();
 
-        public Form1()
+        public VendingMachine()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            #region Carga imágenes
+
             Image cheetos = Image.FromFile(@"assets\logos\cheetos.png");
             bproducto1.Image = cheetos;
             bproducto1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -78,22 +80,12 @@ namespace VendingMachine
             bproducto15.Image = fanta;
             bproducto15.BackgroundImageLayout = ImageLayout.Stretch;
 
-            Image admin = Image.FromFile(@"assets\icons\settings.ico");
-            btnAdmin.Image = admin;
-            btnAdmin.BackgroundImageLayout = ImageLayout.Stretch;
-
             Image pagar = Image.FromFile(@"assets\icons\btnPagar.png");
             btnPagar.Image = pagar;
             btnPagar.BackgroundImageLayout = ImageLayout.Zoom;
+            #endregion
 
             ActualizarMontos();
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            LogInAdmin logInAdmin = new LogInAdmin();
-            logInAdmin.Show();
-            this.Hide();
         }
 
         public void ActualizarMontos()
@@ -103,6 +95,8 @@ namespace VendingMachine
             dataTable.AutoGenerateColumns = false;
             lblTotal.Text = operations.TotalCompras().ToString("C2", new System.Globalization.CultureInfo("es-cr"));
         }
+
+        #region Botones de máquina
 
         private void bproducto1_Click(object sender, EventArgs e)
         {
@@ -194,12 +188,29 @@ namespace VendingMachine
             ActualizarMontos();
         }
 
+        #endregion
+
         #region Botones
         private void btnPagar_Click(object sender, EventArgs e)
         {
             Payment pago = new Payment();
             pago.Show();
             this.Hide();
+        }
+
+        #endregion
+
+        #region Opciones del menú
+        private void administraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogInAdmin logInAdmin = new LogInAdmin();
+            logInAdmin.Show();
+            this.Hide();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         #endregion

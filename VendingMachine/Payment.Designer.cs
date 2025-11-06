@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
             this.bCancel = new System.Windows.Forms.Button();
             this.bPay = new System.Windows.Forms.Button();
             this.txtTarjeta = new System.Windows.Forms.TextBox();
@@ -39,11 +40,12 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblVuelto = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblPendiente = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bCancel
@@ -149,13 +151,6 @@
             this.lblVuelto.TabIndex = 20;
             this.lblVuelto.Text = "monto";
             // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 23);
-            this.label7.TabIndex = 23;
-            // 
             // lblPendiente
             // 
             this.lblPendiente.AutoSize = true;
@@ -189,23 +184,34 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(243, 44);
+            this.label6.Location = new System.Drawing.Point(258, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 25;
             this.label6.Text = "label6";
+            this.label6.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(263, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 301);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblPendiente);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblVuelto);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.bCancel);
@@ -221,6 +227,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
             this.Load += new System.EventHandler(this.Payment_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,10 +246,10 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblVuelto;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblPendiente;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -116,19 +116,19 @@ namespace VendingMachine
             var productos = operations.IndexCompras();
 
             // Registrar venta realizada en la pila
-            GlobalOperations.RegistrarOrden(totalCompra, efectivoIngresado, tarjetaIngresado, productos);
+            GlobalOperations.RegistrarVenta(totalCompra, efectivoIngresado, tarjetaIngresado, productos);
 
             operations.ClearCompras(); //Limpia la lista de comprar, lo prepara para la próxima
 
             MessageBox.Show("Pago realizado con éxito. ¡Gracias por su compra!", "Pago Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form1 main = new Form1();
+            VendingMachine main = new VendingMachine();
             main.Show();
             this.Close();
         }
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            Form1 vendingMachine = new Form1();
+            VendingMachine vendingMachine = new VendingMachine();
             vendingMachine.Show();
             this.Hide();
         }

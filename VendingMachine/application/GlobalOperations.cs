@@ -12,7 +12,7 @@ namespace Vending_Machine.Application
         const int rows = 5;
         const int cols = 3;
 
-        //Arreglo de productos que se van a utilizar para la máquina
+        //Matriz de productos que se van a utilizar para la máquina
         public string[,] NombresProductos { get; set; } = new string[rows, cols]
         {
             { "CHEETOS", "CHIPS AHOY", "COCA COLA" },
@@ -22,25 +22,14 @@ namespace Vending_Machine.Application
             { "SPRITE", "DR.PEPPER", "FANTA" }
         };
         
-        //Matriz bidimencional de pilas, cada celda hace referencia a una cola de producto.
+        //Matriz de colas, cada celda hace referencia a una cola de producto.
         public static Queue<Producto>[,] Inventario { get; set; } = new Queue<Producto>[rows, cols];
         
         //Pila que almacenará todas las compras que se realicen en la máquina
         public static Stack<VentasRealizadas> HistorialVentas { get; set; } = new Stack<VentasRealizadas>();
 
+        //Almacena la lista de productos que se están comprando
         public static List<string> Compras { get; set; } = new List<string>();
-
-        //Inicialización de cada pila dentro de la matriz, con los productos ya establecidos.
-        public void InicializarInventario()
-        {
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    Inventario[i, j] = new Queue<Producto>(); // Cola vacía pero inicializada
-                }
-            }
-        }
 
         //Busca la coordenada en la matriz por el nombre del ítem
         public (int fila, int columna)? BuscarCoordenadasPorNombre(string nombreProducto)
@@ -136,8 +125,6 @@ namespace Vending_Machine.Application
             // Guardar una representación serializada del producto
             string compraSerializada = $"{productoComprado.Nombre}|{productoComprado.Precio}";
             Compras.Add(compraSerializada);
-
-
             MessageBox.Show($"Producto '{productoComprado.Nombre}' agregado al carrito.", "Producto Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -171,7 +158,7 @@ namespace Vending_Machine.Application
         /// <param name="efectivo"></param>
         /// <param name="tarjeta"></param>
         /// <param name="productos"></param>
-        public static void RegistrarOrden(double totalCompra, double efectivo, double tarjeta, List<Producto> productos)
+        public static void RegistrarVenta(double totalCompra, double efectivo, double tarjeta, List<Producto> productos)
         {
             var orden = new VentasRealizadas
             {

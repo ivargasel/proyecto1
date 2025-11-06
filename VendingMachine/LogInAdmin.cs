@@ -30,7 +30,7 @@ namespace VendingMachine
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            Form1 vendingMachine = new Form1();
+            VendingMachine vendingMachine = new VendingMachine();
             vendingMachine.Show();
             this.Hide();
         }

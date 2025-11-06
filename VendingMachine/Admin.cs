@@ -61,7 +61,7 @@ namespace VendingMachine
         #region Opciones del menú
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            VendingMachine form1 = new VendingMachine();
             form1.Show();
             this.Hide();
         }
