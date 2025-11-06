@@ -10,12 +10,13 @@ namespace VendingMachine
             InitializeComponent();
         }
 
+        #region Botones
         private void bLogIn_Click(object sender, EventArgs e)
         {
             string username = txtUserAdmin.Text.Trim();
             string password = txtPassAdmin.Text.Trim();
 
-            if (username == "admin" && password == "admin123")
+            if (username == "admin" && password == "admin")
             {
                 Admin adminPanel = new Admin();
                 adminPanel.Show();
@@ -33,5 +34,7 @@ namespace VendingMachine
             vendingMachine.Show();
             this.Hide();
         }
+
+        #endregion
     }
 }

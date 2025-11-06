@@ -12,6 +12,27 @@ namespace VendingMachine
         {
             InitializeComponent();
             MostrarInventario();
+            pvCargarListadoItems();
+
+            //Asigna al control el evento
+            this.txtPrecio.KeyPress += new KeyPressEventHandler(this.validaDatoNumerico);
+        }
+
+        #region Métodos privados
+        //Carga el list box con la lista de productos definidos en el array
+        private void pvCargarListadoItems()
+        {
+            lboxProductos.Items.Clear();
+            lboxProductos.Items.Clear();
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    string nombre = operations.NombresProductos[i, j];
+                    lboxProductos.Items.Add(nombre);
+                }
+            }
         }
 
         /// <summary>
@@ -23,48 +44,62 @@ namespace VendingMachine
         }
 
         /// <summary>
-        /// Esta función maneja el evento de clic del botón "Cerrar" para volver al formulario principal.
+        /// Verifica que el dato que se está ingresando es un número
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bCerrar_Click(object sender, EventArgs e)
+        private void validaDatoNumerico(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+
+        #region Opciones del menú
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
         }
-
-        /// <summary>
-        /// Esta función maneja el evento de clic del botón para agregar stock al inventario.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button16_Click(object sender, EventArgs e)
+        private void reporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string producto = txtProductoAdmin.Text.Trim();
-            int cantidad = (int)txtCantidadAdmin.Value;
-            decimal precio = !string.IsNullOrEmpty(txtPrecioAdmin.Text.Trim()) ? Convert.ToDecimal(txtPrecioAdmin.Text.Trim()) : 0;
 
-            var response = operations.CreateInventario(producto, cantidad, precio);
-            MessageBox.Show(response, "Stock Agregado");
-            MostrarInventario();
-        }
-
-        private void Admin_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    txtProductoAdmin.Items.Add(operations.Inventario[i, j]);
-                }
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             ReporteVentas reporte = new ReporteVentas();
             reporte.Show();
         }
+
+        #endregion
+
+        #region Botones
+        /// <summary>
+        /// Botón que registra inventario en la cola
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAgregaInventario_Click(object sender, EventArgs e)
+        {
+            string producto = lboxProductos.Text.Trim();
+            int cantidad = (int)txtCantidadAdmin.Value;
+            decimal precio = !string.IsNullOrEmpty(txtPrecio.Text.Trim()) ? Convert.ToDecimal(txtPrecio.Text.Trim()) : 0;
+
+            var response = operations.CreateInventario(producto, precio, cantidad);
+
+            MostrarInventario();
+        }
+
+        /// <summary>
+        /// Crea inventario aleatorio para pruebas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMercanciaDefault_Click(object sender, EventArgs e)
+        {
+            operations.CargarInventarioAleatorio();
+        }
+        #endregion
     }
 }

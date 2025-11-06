@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vending_Machine.Application;
+using VendingMachine.models;
 
 namespace VendingMachine
 {
     public partial class ReporteVentas : Form
     {
         GlobalOperations operations = new GlobalOperations();
+
         public ReporteVentas()
         {
             InitializeComponent();
@@ -21,25 +23,14 @@ namespace VendingMachine
 
         private void ReporteVentas_Load(object sender, EventArgs e)
         {
-            var ordenes = operations.IndexOrdenes();
-            if (ordenes.Count > 0)
-            {
-                for (int i = 0; i < ordenes.Count; i++)
-                {
-                    //string[] value = new string[6];
-                    //value = ordenes[i].Peek();
+            // Convertir la pila a lista para visualizarla (opcional: invertir para mostrar la más reciente arriba)
+            var historial = GlobalOperations.HistorialVentas.ToList();
 
-                    string[] array = ordenes.ToArray();
-                    string valor = array[i];
+            // Si quieres ver lo más reciente primero
+            historial.Reverse();
 
-                    lblReporte.Text += $" {valor} \n";
-
-                }
-            }
-            else
-            {
-                lblReporte.Text = "No hay ventas registradas.";
-            }
+            // Bind al DataGridView
+            dgVentas.DataSource = historial;
         }
     }
 }

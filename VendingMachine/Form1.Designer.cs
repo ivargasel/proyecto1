@@ -241,7 +241,7 @@
             this.btnPagar.Size = new System.Drawing.Size(292, 63);
             this.btnPagar.TabIndex = 1;
             this.btnPagar.UseVisualStyleBackColor = false;
-            this.btnPagar.Click += new System.EventHandler(this.button1_Click);
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // listView1
             // 
@@ -265,7 +265,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(407, 346);
+            this.label1.Location = new System.Drawing.Point(394, 346);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 24);
             this.label1.TabIndex = 5;
@@ -275,7 +275,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(557, 346);
+            this.lblTotal.Location = new System.Drawing.Point(622, 346);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(68, 24);
             this.lblTotal.TabIndex = 6;

@@ -28,35 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblReporte = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgVentas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVentas)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblReporte
+            // label1
             // 
-            this.lblReporte.AutoSize = true;
-            this.lblReporte.Location = new System.Drawing.Point(13, 13);
-            this.lblReporte.Name = "lblReporte";
-            this.lblReporte.Size = new System.Drawing.Size(55, 13);
-            this.lblReporte.TabIndex = 0;
-            this.lblReporte.Text = "lblReporte";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ventas realizadas a la fecha";
+            // 
+            // dgVentas
+            // 
+            this.dgVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVentas.Location = new System.Drawing.Point(16, 44);
+            this.dgVentas.Name = "dgVentas";
+            this.dgVentas.Size = new System.Drawing.Size(772, 156);
+            this.dgVentas.TabIndex = 2;
             // 
             // ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblReporte);
+            this.ClientSize = new System.Drawing.Size(800, 255);
+            this.Controls.Add(this.dgVentas);
+            this.Controls.Add(this.label1);
             this.Name = "ReporteVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReporteVentas";
             this.Load += new System.EventHandler(this.ReporteVentas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgVentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblReporte;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgVentas;
     }
 }

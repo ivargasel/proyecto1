@@ -10,6 +10,7 @@ namespace VendingMachine
     public partial class Form1 : Form
     {
         GlobalOperations operations = new GlobalOperations();
+
         public Form1()
         {
             InitializeComponent();
@@ -193,11 +194,14 @@ namespace VendingMachine
             ActualizarMontos();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        #region Botones
+        private void btnPagar_Click(object sender, EventArgs e)
         {
             Payment pago = new Payment();
             pago.Show();
             this.Hide();
         }
+
+        #endregion
     }
 }
